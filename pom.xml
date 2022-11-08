@@ -6,22 +6,18 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>homeworknine</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>homeworkfour</name>
-	<description>homeworknine</description>
+	<artifactId>homework10</artifactId>
+	<packaging>war</packaging>
+	<version>1.0</version>
+	<name>homework10</name>
+	<description>homework10</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -30,7 +26,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
@@ -39,6 +34,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>2.7.5</version>
 		</dependency>
 
 		<dependency>
@@ -57,15 +58,24 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.8.1</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

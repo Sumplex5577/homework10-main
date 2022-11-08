@@ -16,14 +16,18 @@ import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-    @Autowired
-    private final PersonRepository personRepository;
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    public PersonServiceImpl(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
 
+    private final PersonRepository personRepository;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private final EmailService emailService;
+
+    public PersonServiceImpl(PersonRepository personRepository, BCryptPasswordEncoder bCryptPasswordEncoder, EmailService emailService) {
+        this.personRepository = personRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.emailService = emailService;
+    }
     @Override
     public Person createPerson(String firstName, String lastName, String email, String username, String password) {
         Person newPerson = new Person();
@@ -32,6 +36,7 @@ public class PersonServiceImpl implements PersonService {
         newPerson.setEmail(email);
         newPerson.setUsername(username);
         newPerson.setPassword(bCryptPasswordEncoder.encode(password));
+        emailService.sendEmail(newPerson);
         if (newPerson.getUsername().contains("admin")) {
             newPerson.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
         } else {
