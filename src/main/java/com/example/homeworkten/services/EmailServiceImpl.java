@@ -25,7 +25,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setSubject("Best Buy Registration Completed");
             helper.setText("<h3>Dear, " + person.getFirstName() + "!</h3><br>" +
                     "Your registration in BestBuy shop was successful.</h3><br>" +
-                    "Try you best shopping experience with BestBuy via link below:</h4></i> " +
+                    "Try you best shopping experience with BestBuyOnlineShop via link below:</h4></i> " +
                     "<a href=\"http://localhost:8080/login\" target=\"_blank\">Log in</a>", true);
             javaMailSender.send(message);
         } catch (MessagingException e) {
