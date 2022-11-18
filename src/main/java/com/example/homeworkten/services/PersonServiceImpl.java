@@ -42,7 +42,11 @@ public class PersonServiceImpl implements PersonService {
         } else {
             newPerson.setRoles(Collections.singleton(new Role(1L, "ROLE_CUSTOMER")));
         }
-        return personRepository.save(newPerson);
+        Person savedPerson = personRepository.save(newPerson);
+        if (personRepository.existsById(savedPerson.getIdPerson())) {
+            emailService.sendEmail(newPerson);
+        }
+        return newPerson;
     }
 
     @Override
