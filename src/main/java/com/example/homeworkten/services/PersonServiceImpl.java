@@ -36,7 +36,6 @@ public class PersonServiceImpl implements PersonService {
         newPerson.setEmail(email);
         newPerson.setUsername(username);
         newPerson.setPassword(bCryptPasswordEncoder.encode(password));
-        emailService.sendEmail(newPerson);
         if (newPerson.getUsername().contains("admin")) {
             newPerson.setRoles(Collections.singleton(new Role(2L, "ROLE_ADMIN")));
         } else {
