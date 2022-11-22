@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+
+  homework10:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresqldb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresqldb:5432/shop
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+
+  postgresqldb:
+    image: 'postgres:14-alpine'
+    container_name: postgresqldb
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=shop
